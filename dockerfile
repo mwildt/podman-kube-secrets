@@ -1,15 +1,10 @@
-FROM registry.suse.com/bci/python:3.11
+FROM golang:latest AS build
 
-MAINTAINER mail@maltewildt.de
+WORKDIR /src
+COPY . /src
 
-WORKDIR /usr/src/app
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o podman-kube-secrets ./main.go
 
-ADD requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
-ADD podman-kube-secrets.py ./
-
-ENTRYPOINT ["python3", "podman-kube-secrets.py" ]
-
-
-
+FROM scratch
+COPY --from=build /src/podman-kube-secrets /podman-kube-secrets
+ENTRYPOINT ["/podman-kube-secrets"]
