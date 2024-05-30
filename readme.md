@@ -32,7 +32,7 @@ podman-kube-secrets -n my-secret -d GEHEIM | podman kube play -
 ```
 
 ## ContainerizeIT
-to avoid installation of python on the target system, podman-kube-secrets.py is also published as a container image based on the official [python image](https://hub.docker.com/_/python/)
+to avoid installation of python on the target system, podman-kube-secrets.py is also published as a container image.
 
 ```bash
 podman run --rm ghcr.io/mwildt/podman-kube-secrets:main -n my-secret -d GEHEIM | podman kube play -
