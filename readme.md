@@ -13,7 +13,7 @@ using podman play kube
 create a new secret using [podman-secret-create](https://docs.podman.io/en/latest/markdown/podman-secret-create.1.html).
 note the usage of --base64 to encode the secret in base64:
 ```bash
-python3 podman-kube-secrets.py --base64 -n my-secret -d GEHEIM | podman secret create my-secret -
+podman-kube-secrets --base64 -n my-secret -d GEHEIM | podman secret create my-secret -
 ```
 create a new secret using [podman-kube-play](https://docs.podman.io/en/latest/markdown/podman-kube-play.1.html): 
 ```bash
