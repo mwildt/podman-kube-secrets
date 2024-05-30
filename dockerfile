@@ -1,5 +1,7 @@
 FROM golang:latest AS build
 
+MAINTAINER mail@maltewildt.de
+
 WORKDIR /src
 COPY . /src
 
